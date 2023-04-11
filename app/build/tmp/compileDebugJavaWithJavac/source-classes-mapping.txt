@@ -1,0 +1,27 @@
+com/example/jsoup/MainActivity2.java
+ com.example.jsoup.MainActivity2
+ com.example.jsoup.MainActivity2$1
+ com.example.jsoup.MainActivity2$2
+com/example/jsoup/BuildConfig.java
+ com.example.jsoup.BuildConfig
+com/example/jsoup/MainActivity5.java
+ com.example.jsoup.MainActivity5
+ com.example.jsoup.MainActivity5$MyList_5
+ com.example.jsoup.MainActivity5$MyList_5$1
+com/example/jsoup/MainActivity3.java
+ com.example.jsoup.MainActivity3
+ com.example.jsoup.MainActivity3$MyList_2
+ com.example.jsoup.MainActivity3$MyList_2$1
+com/example/jsoup/MainActivity4.java
+ com.example.jsoup.MainActivity4
+ com.example.jsoup.MainActivity4$MyList_3
+ com.example.jsoup.MainActivity4$MyList_3$1
+com/example/jsoup/MainActivity.java
+ com.example.jsoup.MainActivity
+ com.example.jsoup.MainActivity$1
+ com.example.jsoup.MainActivity$MyList
+ com.example.jsoup.MainActivity$MyList$1
+ com.example.jsoup.MainActivity$MyList$2
+ com.example.jsoup.MainActivity$MyList$3
+ com.example.jsoup.MainActivity$_MyList
+ com.example.jsoup.MainActivity$_MyList$1
