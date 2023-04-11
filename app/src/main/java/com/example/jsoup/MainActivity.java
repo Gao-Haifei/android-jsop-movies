@@ -36,8 +36,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Timer;
 
-public class MainActivity extends AppCompatActivity {
+ public class MainActivity extends AppCompatActivity {
 
 
     ArrayList<String> html, name;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     _MyList _myList;
     ListView listView, _listView;
     TabLayout mytab;
+    Timer timer;
     
 
 
