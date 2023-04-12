@@ -1,27 +1,17 @@
- package com.example.jsoup;
+package com.example.jsoup;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.material.tabs.TabLayout;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -30,60 +20,20 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Timer;
 
- public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
 
     ArrayList<String> html, name;
     MyList myList;
-    _MyList _myList;
-    ListView listView, _listView;
-    TabLayout mytab;
-    Timer timer;
-    
-
-
-
-    public void MyTab() {
-        mytab.addTab(mytab.newTab().setText("电影"));
-        mytab.addTab(mytab.newTab().setText("电视剧"));
-        mytab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                if (tab.getText().equals("电影")) {
-                    listView.setVisibility(View.VISIBLE);
-
-                } else {
-                    _listView.setVisibility(View.VISIBLE);
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-                if (tab.getText().equals("电影")) {
-                    listView.setVisibility(View.GONE);
-                } else {
-                    _listView.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-            }
-        });
-    }
+    ListView listView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        StatusBar statusBar = new StatusBar(MainActivity.this);
+        statusBar.setColor(R.color.transparent);
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
@@ -92,12 +42,7 @@ import java.util.Timer;
         StrictMode.setThreadPolicy(policy);
 
 
-        mytab = findViewById(R.id.mytable);
         listView = findViewById(R.id.listview);
-        _listView = findViewById(R.id._listview);
-
-        MyTab();
-        _get_data();
         get_data();
 
 
@@ -115,13 +60,37 @@ import java.util.Timer;
                 Element element = a.get(i);
                 String href = element.attr("href");
                 String dd = element.text();
-                String[] stringArray = getResources().getStringArray(R.array.titles);
-                HashSet<String> set = new HashSet<>();
-                set.addAll(Arrays.asList(stringArray));
-                if (set.contains(dd)) {
-                    html.add("http://10.0.0.50" + href);
-                    name.add(dd);
+
+                switch (dd) {
+                    case "21日播放":
+                        break;
+                    case "免责声明.txt":
+                        break;
+                    case "web.config":
+                        break;
+                    case "分类电影":
+                        break;
+                    case "印度电影":
+                        break;
+                    case "奥斯卡系列":
+                        break;
+                    case "梦工厂":
+                        break;
+                    case "第89届奥斯卡金像奖系列":
+                        break;
+                    case "经典系列":
+                        break;
+                    case "革命电影":
+                        break;
+                    case "高清影片":
+                        break;
+                    case "[转到父目录]":
+                        break;
+                    default:
+                        html.add("http://10.0.0.50" + href);
+                        name.add(dd);
                 }
+
             }
             myList = new MyList(MainActivity.this, html, name);
             listView.setAdapter(myList);
@@ -131,86 +100,6 @@ import java.util.Timer;
         }
     }
 
-    public void _get_data() {
-        html = new ArrayList<>();
-        name = new ArrayList<>();
-        String uri = "http://10.0.0.50/%E7%94%B5%E8%A7%86%E5%89%A7%E5%9C%BA/";
-        try {
-            Document document = Jsoup.connect(uri).get();
-            Elements a = document.getElementsByTag("a");
-            for (int i = 2; i < a.size(); i++) {
-
-                Element element = a.get(i);
-                String href = element.attr("href");
-                String dd = element.text();
-
-                html.add("http://10.0.0.50" + href);
-                name.add(dd);
-            }
-            _myList = new _MyList(MainActivity.this, html, name);
-            _listView.setAdapter(_myList);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    public class _MyList extends BaseAdapter {
-        ArrayList<String> name, html;
-        Context context;
-        LayoutInflater layoutInflater;
-
-        public _MyList(Context context, ArrayList<String> html, ArrayList<String> name) {
-            this.context = context;
-            this.html = html;
-            this.name = name;
-            layoutInflater = LayoutInflater.from(context);
-        }
-
-        @Override
-        public int getCount() {
-            return name.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            if (convertView == null) {
-                convertView = layoutInflater.inflate(R.layout.item, null);
-            }
-
-
-            TextView text = convertView.findViewById(R.id.text);
-
-            text.setText(name.get(position));
-
-            text.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    Intent intent = new Intent(MainActivity.this, MainActivity5.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("value", name.get(position));
-                    intent.putExtra("value", bundle);
-                    startActivity(intent);
-
-                }
-            });
-
-
-            return convertView;
-        }
-    }
 
     public class MyList extends BaseAdapter {
         ArrayList<String> name, html;
@@ -224,6 +113,7 @@ import java.util.Timer;
             layoutInflater = LayoutInflater.from(context);
         }
 
+
         @Override
         public int getCount() {
             return name.size();
@@ -247,54 +137,50 @@ import java.util.Timer;
 
 
             TextView text = convertView.findViewById(R.id.text);
-            if (position < 11) {
-                text.setText(name.get(position));
+            text.setText(name.get(position));
 
-                text.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+            switch (name.get(position)) {
+                case "2009年":
+                case "2010年":
+                case "2011年":
+                case "2012年":
+                case "2013年":
+                case "2014年":
+                case "2015年":
+                case "2016年":
+                case "2017年":
+                case "2018年":
+                case "2019年":
+                case "1080P":
+                case "4k":
+                case "豆瓣电影Top250":
+                    text.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(MainActivity.this, movei_list.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putString("value", name.get(position));
+                            intent.putExtra("value", bundle);
+                            startActivity(intent);
 
-
-                        Intent intent = new Intent(MainActivity.this, MainActivity3.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("value", name.get(position));
-                        intent.putExtra("value", bundle);
-                        startActivity(intent);
-
-                    }
-                });
-            } else if (position < 14) {
-                text.setText(name.get(position));
-
-                text.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-                        Intent intent = new Intent(MainActivity.this, MainActivity4.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("value", name.get(position));
-                        intent.putExtra("value", bundle);
-                        startActivity(intent);
-
-                    }
-                });
-            }
-            else {
-                text.setText(name.get(position));
-
-                text.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                        }
+                    });
+                    break;
+                default:
+                    text.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
 
 
-                        Intent intent = new Intent(MainActivity.this, MainActivity3.class);
-                        Bundle bundle = new Bundle();
-                        bundle.putString("value", name.get(position));
-                        intent.putExtra("value", bundle);
-                        startActivity(intent);
+                            Intent intent = new Intent(MainActivity.this, year_month.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putString("value", name.get(position));
+                            intent.putExtra("value", bundle);
+                            startActivity(intent);
 
-                    }
-                });
+                        }
+                    });
+                    break;
             }
 
 

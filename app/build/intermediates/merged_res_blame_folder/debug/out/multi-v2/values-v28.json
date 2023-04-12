@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Android Project\\Jsoup\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v28\\values-v28.xml",
+            "outputFile": "com.example.jsoup.app-mergeDebugResources-13:/values-v28/values-v28.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\实验室01\\.gradle\\caches\\transforms-2\\files-2.1\\c9350c4470b6f4895016aaf418fed985\\material-1.1.0\\res\\values-v28\\values-v28.xml",
+                    "source": "C:\\Users\\TF\\.gradle\\caches\\transforms-3\\e7ef76db55f55e7d6c2539c0e9d88ebc\\transformed\\material-1.1.0\\res\\values-v28\\values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\实验室01\\.gradle\\caches\\transforms-2\\files-2.1\\780dca39713ff2fcf4eadcaf494ac982\\appcompat-1.1.0\\res\\values-v28\\values-v28.xml",
+                    "source": "C:\\Users\\TF\\.gradle\\caches\\transforms-3\\41d0d36c254d2aa2fa05102ad3d79faa\\transformed\\appcompat-1.1.0\\res\\values-v28\\values-v28.xml",
                     "from": {
                         "startLines": "2,3,4,8",
                         "startColumns": "4,4,4,4",
@@ -26,10 +26,10 @@
                     "to": {
                         "startLines": "10,11,12,16",
                         "startColumns": "4,4,4,4",
-                        "startOffsets": "755,830,917,1147",
+                        "startOffsets": "755,830,917,1097",
                         "endLines": "10,11,15,19",
                         "endColumns": "74,86,12,12",
-                        "endOffsets": "825,912,1142,1384"
+                        "endOffsets": "825,912,1092,1284"
                     }
                 }
             ]

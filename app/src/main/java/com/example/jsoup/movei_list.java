@@ -21,33 +21,34 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class MainActivity4 extends AppCompatActivity {
-    ArrayList<String> html_3, name_3;
-    MyList_3 myList_3;
-    ListView listView;
-    String aa;
+public class movei_list extends AppCompatActivity {
+    ListView listView_2;
+    MyList_2 myList_2;
+    ArrayList<String> name_2, html_2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        StatusBar statusBar = new StatusBar(movei_list.this);
+        statusBar.setColor(R.color.transparent);
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        setContentView(R.layout.activity_main4);
+        setContentView(R.layout.movei_list);
 
-        listView = findViewById(R.id.list_view_3);
+        listView_2 = findViewById(R.id.list_view_2);
         Intent intent = getIntent();
         Bundle bundle = intent.getBundleExtra("value");
-        aa = bundle.getString("value");
+        String aa = bundle.getString("value");
         get_data(aa);
     }
 
 
     public void get_data(String ss) {
-        html_3 = new ArrayList<>();
-        name_3 = new ArrayList<>();
+        html_2 = new ArrayList<>();
+        name_2 = new ArrayList<>();
         String uri = "http://10.0.0.50/%E7%94%B5%E5%BD%B1%E9%A2%91%E9%81%93/" + ss;
         try {
             Document document = Jsoup.connect(uri).get();
@@ -58,25 +59,24 @@ public class MainActivity4 extends AppCompatActivity {
                 String href = element.attr("href");
                 String dd = element.text();
 
-                html_3.add("http://10.0.0.50/" + href);
-                name_3.add(dd);
+                html_2.add("http://10.0.0.50/" + href);
+                name_2.add(dd);
             }
 
-            myList_3 = new MainActivity4.MyList_3(MainActivity4.this, html_3, name_3);
-            listView.setAdapter(myList_3);
+            myList_2 = new MyList_2(movei_list.this, html_2, name_2);
+            listView_2.setAdapter(myList_2);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-
-    public class MyList_3 extends BaseAdapter {
+    public class MyList_2 extends BaseAdapter {
         ArrayList<String> name, html;
         Context context;
         LayoutInflater layoutInflater;
 
-        public MyList_3(Context context, ArrayList<String> html, ArrayList<String> name) {
+        public MyList_2(Context context, ArrayList<String> html, ArrayList<String> name) {
             this.context = context;
             this.html = html;
             this.name = name;
@@ -112,9 +112,9 @@ public class MainActivity4 extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent();
-                    intent.setClass(MainActivity4.this, MainActivity3.class);
+                    intent.setClass(movei_list.this, Player.class);
                     Bundle bundle = new Bundle();
-                    bundle.putString("value", aa + "/" + name.get(position));
+                    bundle.putString("value", html.get(position));
                     intent.putExtra("value", bundle);
                     startActivity(intent);
 
@@ -125,4 +125,5 @@ public class MainActivity4 extends AppCompatActivity {
             return convertView;
         }
     }
+
 }

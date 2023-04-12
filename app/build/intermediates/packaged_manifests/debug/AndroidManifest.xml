@@ -21,10 +21,9 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.Jsoup" >
-        <activity android:name="com.example.jsoup.MainActivity5" />
-        <activity android:name="com.example.jsoup.MainActivity4" />
-        <activity android:name="com.example.jsoup.MainActivity3" />
-        <activity android:name="com.example.jsoup.MainActivity2" />
+        <activity android:name="com.example.jsoup.year_month" />
+        <activity android:name="com.example.jsoup.movei_list" />
+        <activity android:name="com.example.jsoup.Player" />
         <activity android:name="com.example.jsoup.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,7 +1,10 @@
-#Thu Dec 16 21:15:46 CST 2021
-base.0=D\:\\Android Project\\Jsoup\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-path.1=classes.dex
+#Wed Apr 12 14:48:10 CST 2023
+base.2=E\:\\Work\\Android Project\\android-jsop-movies\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex
+path.2=6/classes.dex
+base.1=E\:\\Work\\Android Project\\android-jsop-movies\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+path.1=0/classes.dex
+base.0=E\:\\Work\\Android Project\\android-jsop-movies\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+renamed.2=classes3.dex
 renamed.1=classes2.dex
-path.0=classes.dex
 renamed.0=classes.dex
-base.1=D\:\\Android Project\\Jsoup\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\classes.dex
+path.0=classes.dex
